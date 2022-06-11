@@ -1,0 +1,35 @@
+# 仮想環境の作成
+python3 -m venv .venv
+
+# 仮想環境への切り替え
+. .venv/bin/activate
+
+# pip のアップグレード
+pip3 install --upgrade pip
+
+# requirements.txt 記載のライブラリのインストール
+pip install -r requirements.txt
+
+# gcloud にパスを通す
+source .zshrc
+
+# gcloud の初期化
+gcloud init
+
+# プロジェクトの作成
+gcloud projects create ProjectID --set-as-default
+
+# プロジェクトのデフォルト切り替え
+gcloud config set project ProjectID
+
+# プロジェクトの削除
+gcloud projects delete ProjectID
+
+# deploy (Cloud Build API が有効である必要あり)
+gcloud app deploy
+
+# log
+gcloud app logs tail -s default
+
+# ブラウザでアプリ動かす
+gcloud app browse
